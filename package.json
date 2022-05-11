@@ -21,7 +21,8 @@
     "check-format": "npm run prettier -- --list-different",
     "lint": "eslint --ignore-path .gitignore \"**/*.+(js|jsx)\"",
     "validate": "npm-run-all --parallel lint check-format",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:css": "stylelint --ignore-path .gitignore --fix \"**/*.css\""
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +49,10 @@
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "stylelint": "^14.8.2",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0"
   },
   "lint-staged": {
     "**/*.+(js|jsx)": [
@@ -57,6 +61,9 @@
     "**/*.+(ts|tsx|js|jsx|json|css|md|mdx|html)": [
       "prettier --write",
       "git add"
+    ],
+    "**/*.+(css|scss)": [
+      "stylelint --fix"
     ]
   }
 }
